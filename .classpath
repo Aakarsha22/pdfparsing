@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="lib/batik-codec.jar/batik-codec.jar"/>
+	<classpathentry kind="lib" path="lib/batik.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15on-1.49.jar"/>
+	<classpathentry kind="lib" path="lib/cmlxom-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/com.springsource.com.lowagie.text-2.0.8.jar"/>
+	<classpathentry kind="lib" path="lib/euclid-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/fontbox-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/icu4j-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jempbox-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/jpedal.jar"/>
+	<classpathentry kind="lib" path="lib/jumbo-6.0.jar"/>
+	<classpathentry kind="lib" path="lib/LRFTools-0.9.236.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/preflight-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/preflight-app-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/xmpbox-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/xom.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4-bin.zip"/>
+	<classpathentry kind="lib" path="/jpdf2html/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/jpdf2html/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/jpdf2html/lib/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="/jpdf2html/lib/spring-context-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/jpdf2html/lib/spring-beans-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
