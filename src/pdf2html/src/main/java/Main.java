@@ -27,7 +27,7 @@ public class Main {
 //		PDF2HTMLService service = appContext.getBean(PDF2HTMLService.class);
 		PDF2HTMLServiceImpl service = new PDF2HTMLServiceImpl(); 
 		try {
-			InputStream inputStream = new FileInputStream("/home/pritishc/Documents/Sample text.pdf");
+			InputStream inputStream = new FileInputStream("lib/Sample text.pdf");
 			String output = service.convertPage(inputStream, 2);
 			FileUtils.writeStringToFile(new File("generated.html"), output);
 		} catch (FileNotFoundException e) {
