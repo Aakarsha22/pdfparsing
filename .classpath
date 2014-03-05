@@ -14,7 +14,6 @@
 	<classpathentry kind="lib" path="lib/jempbox-1.8.3.jar"/>
 	<classpathentry kind="lib" path="lib/jpedal.jar"/>
 	<classpathentry kind="lib" path="lib/jumbo-6.0.jar"/>
-	<classpathentry kind="lib" path="lib/LRFTools-0.9.236.jar"/>
 	<classpathentry kind="lib" path="lib/pdfbox-1.8.3.jar"/>
 	<classpathentry kind="lib" path="lib/preflight-1.8.3.jar"/>
 	<classpathentry kind="lib" path="lib/preflight-app-1.8.3.jar"/>
@@ -22,10 +21,12 @@
 	<classpathentry kind="lib" path="lib/xom.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4-bin.zip"/>
-	<classpathentry kind="lib" path="/jpdf2html/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="/jpdf2html/lib/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="/jpdf2html/lib/jsoup-1.7.3.jar"/>
-	<classpathentry kind="lib" path="/jpdf2html/lib/spring-context-4.0.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="/jpdf2html/lib/spring-beans-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-examples-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
