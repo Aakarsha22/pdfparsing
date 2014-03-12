@@ -1,10 +1,12 @@
 package pdf2html.src.main.java;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 
 import org.apache.commons.io.FileUtils;
 //import org.springframework.context.ApplicationContext;
@@ -28,13 +30,32 @@ public class Main {
 		PDF2HTMLServiceImpl service = new PDF2HTMLServiceImpl(); 
 		try {
 			InputStream inputStream = new FileInputStream("lib/Sample text.pdf");
-			String output = service.convertPage(inputStream, 2);
-			FileUtils.writeStringToFile(new File("generated.html"), output);
+			String output = captureStream(inputStream, service);
+			System.out.print(output);
+			//FileUtils.writeStringToFile(new File("generated.html"), output);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/* This method uses the FileInputStream which links to the PDF and the 
+	 * PDF2HTMLServiceImpl object whose convertPage() method needs to be called
+	 * and redirects the output to our PrintStream.
+	 * In this manner, we are able to return the console output as a string. 
+	 */
+	static String captureStream(InputStream fs, PDF2HTMLServiceImpl pdf) //Hook System.out.print to a different stream.
+	{
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		//Store the old stream to be reused later.
+		PrintStream old = System.out;
+		
+		System.setOut(ps);
+		pdf.convertPage(fs, 2);
+		System.out.flush();
+		System.setOut(old);
+		return os.toString();
+	}
 }
