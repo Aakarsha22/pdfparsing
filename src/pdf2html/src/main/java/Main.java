@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import pdf2html.src.main.java.pdf2html.util.PDF2HTMLException;
+//import pdf2html.src.main.java.pdf2html.util.PDF2HTMLException;
 import pdf2html.src.main.java.service.impl.PDF2HTMLServiceImpl;
-import pdf2html.src.main.java.service.intf.PDF2HTMLService;
+//import pdf2html.src.main.java.service.intf.PDF2HTMLService;
 
 public class Main {
 
@@ -40,10 +40,14 @@ public class Main {
 		}
 	}
 	
-	/* This method uses the FileInputStream which links to the PDF and the 
+	/* Name: captureStream()
+	 * Description: This method uses the FileInputStream which links to the PDF and the 
 	 * PDF2HTMLServiceImpl object whose convertPage() method needs to be called
 	 * and redirects the output to our PrintStream.
-	 * In this manner, we are able to return the console output as a string. 
+	 * In this manner, we are able to return the console output as a string.
+	 * Output format: "String[TextAdjusted X-Position, TextAdjusted Y-Position, FontSize,
+	 * XScale, MaximumHeightOfAllCharacters, WidthOfSpaceCharacter, TextDirectionAdjustedStringWidth,
+	 * ]CharacterItself"  
 	 */
 	static String captureStream(InputStream fs, PDF2HTMLServiceImpl pdf) //Hook System.out.print to a different stream.
 	{
