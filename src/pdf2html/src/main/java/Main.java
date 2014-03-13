@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+import pdf2html.src.bean.BeanGenerator;
+
 //import org.apache.commons.io.FileUtils;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,17 +28,20 @@ public class Main {
 //				"applicationContext.xml");
 //
 //		PDF2HTMLService service = appContext.getBean(PDF2HTMLService.class);
+		String output = "";
 		PDF2HTMLServiceImpl service = new PDF2HTMLServiceImpl(); 
 		try {
 			InputStream inputStream = new FileInputStream("lib/Sample text.pdf");
-			String output = captureStream(inputStream, service);
-			System.out.print(output);
+			output = captureStream(inputStream, service);
+			//System.out.print(output);
 			//FileUtils.writeStringToFile(new File("generated.html"), output);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		BeanGenerator bg = new BeanGenerator(output);
+		bg.makeBeans();
 	}
 	
 	/* Name: captureStream()
