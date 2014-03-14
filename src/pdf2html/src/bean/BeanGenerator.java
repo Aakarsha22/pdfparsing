@@ -3,13 +3,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.*;
 
 public class BeanGenerator 
 {
 	StringBuilder beanGen;
-	String[] lines;
 	Pattern character;
 	Pattern image;
 	
