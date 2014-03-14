@@ -33,7 +33,7 @@ public class Main {
 		try {
 			InputStream inputStream = new FileInputStream("lib/Sample text.pdf");
 			output = captureStream(inputStream, service);
-			//System.out.print(output);
+			System.out.print(output);
 			//FileUtils.writeStringToFile(new File("generated.html"), output);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

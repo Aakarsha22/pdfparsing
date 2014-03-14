@@ -36,7 +36,8 @@ public class BeanGenerator
 		//scan.useDelimiter("^" + character.pattern());
 		BufferedReader io = new BufferedReader(new StringReader(beanGen.toString()));
 		
-		try {
+		try 
+		{
 			while((getScan = io.readLine()) != null)
 			{
 				Matcher m = character.matcher(getScan);
@@ -49,8 +50,8 @@ public class BeanGenerator
 				}
 				groups = "";
 			}
-		} catch (IllegalArgumentException
-				| IllegalAccessException | IOException e) {
+			System.out.print("Pointless debug statement");
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -62,6 +63,7 @@ public class BeanGenerator
 		static String singleChar = "(.)";
 		static String floatNum = "([+-]?\\d*\\.\\d+)(?![-+0-9\\.])";
 		static String space = "\\s";
+		static String singleCharOrSpace = "([\\s.\\w])";
 		
 		static String charRegex = words + singleChar + floatNum
 				+ singleChar + floatNum + space + words 
@@ -69,6 +71,6 @@ public class BeanGenerator
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + space + words
-				+ singleChar + floatNum + singleChar + singleChar;
+				+ singleChar + floatNum + singleChar + singleCharOrSpace;
 	}
 }
