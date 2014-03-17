@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import pdf2html.src.bean.BeanGenerator;
+import pdf2html.src.bean.BeanToHTML;
 
 //import org.apache.commons.io.FileUtils;
 //import org.springframework.context.ApplicationContext;
@@ -42,6 +43,13 @@ public class Main {
 		}
 		BeanGenerator bg = new BeanGenerator(output);
 		bg.makeBeans();
+		BeanToHTML bth = new BeanToHTML(bg.getBeanMap(), 2);
+		try {
+			bth.writeHTML();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/* Name: captureStream()

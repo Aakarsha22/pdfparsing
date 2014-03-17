@@ -21,12 +21,31 @@ public class BeanToHTML
 		pageNumber = i;
 	}
 	
-	public void createHTML()
+	void createHTMLString()
 	{
 		//File HTMLfile = new File("output/HTML" + pageNumber + ".html");
+		int beanCounter = 1;
 		for(Map.Entry<Coordinate, ArrayList<CharBean>> entry : beanMap.entrySet())
 		{
-			
+			HTML.append("<DIV style=\"top: 0 left: " + entry.getKey().getTextAdjYPos() + "font-size: ");
+			for(CharBean C : entry.getValue())
+			{
+				if(beanCounter == 1)
+					HTML.append(C.fontSize + "\">");
+				HTML.append(C.character);
+				if(beanCounter == entry.getValue().size())
+					HTML.append("</DIV>" + newLine);
+				beanCounter++;
+			}
+			beanCounter = 1;
 		}
+	}
+	
+	public void writeHTML() throws IOException
+	{
+		createHTMLString();
+		File htmlFile = new File("output/HTML" + pageNumber + ".html");
+		PrintWriter pw = new PrintWriter(new FileWriter(htmlFile));
+		pw.println(HTML);
 	}
 }
