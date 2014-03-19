@@ -5,22 +5,8 @@ public class Coordinate //Differentiates lines based on Y-coordinate.
 	//private Double textAdjXPos; //Using Double objects for equality purposes.
 	private String textAdjYPos;
 	
-	public Coordinate(double Y)
-	{
-		this.textAdjYPos = Double.toString(Y);
-	}
-	
-	/*double getTextAdjXPos() {
-		return textAdjXPos;
-	}
-	void setTextAdjXPos(double textAdjXPos) {
-		this.textAdjXPos = textAdjXPos;
-	}*/
 	String getTextAdjYPos() {
 		return textAdjYPos;
-	}
-	void setTextAdjYPos(String textAdjYPos) {
-		this.textAdjYPos = textAdjYPos;
 	}
 	
 	public int hashCode()
@@ -35,6 +21,7 @@ public class Coordinate //Differentiates lines based on Y-coordinate.
 	public boolean equals(Object o)
 	{
 		if(o instanceof Coordinate)
+		if(o instanceof Double)
 		{
 			Coordinate c = (Coordinate)o;
 			if(this.textAdjYPos.equals(c.getTextAdjYPos())) //Make it so that Coordinate objects on the same line (same Y coord) are equal.
