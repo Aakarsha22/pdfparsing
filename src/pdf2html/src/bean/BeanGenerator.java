@@ -47,7 +47,7 @@ public class BeanGenerator
 				Matcher m = character.matcher(getScan);
 				if(m.find())
 				{
-					Coordinate coord = new Coordinate(Double.parseDouble(m.group(5)));
+					Coordinate coord = new Coordinate(m.group(5));
 					groups = m.group(3) + "," + m.group(5) + "," + m.group(8)
 							+ "," + m.group(11) + "," + m.group(14) + ","
 							+ m.group(17) + "," + m.group(20) + "," + m.group(22);
