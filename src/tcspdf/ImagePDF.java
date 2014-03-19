@@ -13,10 +13,10 @@ public class ImagePDF
 	public static void main(String[] args) {
 		   ImagePDF obj = new ImagePDF();
 		    try {
-		        //obj.read_pdf(); //Image output method.
+		        obj.read_pdf(); //Image output method.
 		    	//obj.getFontProperties(); //Trying for fonts.
 		    	//if(Boolean.parseBoolean(args[0]) == true)
-		    		writeToHTML();
+		    		//writeToHTML();
 		    } catch (Exception ex) {
 		        System.out.println("" + ex);
 		    }
@@ -47,7 +47,7 @@ public class ImagePDF
 		void read_pdf() throws IOException {
 		    PDDocument document = null; 
 		    try {
-		        document = PDDocument.load("/home/pritishc/Documents/Sample text.pdf");
+		        document = PDDocument.load("lib/Sample text.pdf");
 		    } catch (IOException ex) {
 		        System.out.println("" + ex);
 		    }
@@ -65,7 +65,7 @@ public class ImagePDF
 		            while (imageIter.hasNext()) {
 		                String key = (String) imageIter.next();
 		                PDXObjectImage image = (PDXObjectImage) pageImages.get(key);
-		                image.write2file("/home/pritishc/Documents/ImageIO/image" + i);
+		                image.write2file("output/ImageIO/image" + i);
 		                i ++;
 		            }
 		        }
