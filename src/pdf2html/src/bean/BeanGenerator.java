@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 
 public class BeanGenerator 
@@ -11,7 +12,8 @@ public class BeanGenerator
 	Pattern character;
 	Pattern image;
 	
-	ArrayList<CharBean> charBeanList = new ArrayList<CharBean>();
+	ArrayList<CharBean> charBeanList; //Will use this as a placeholder.
+	private LinkedHashMap<Coordinate, ArrayList<CharBean>> beanMap = new LinkedHashMap<Coordinate, ArrayList<CharBean>>();
 	
 	public BeanGenerator(String s)
 	{
@@ -19,6 +21,10 @@ public class BeanGenerator
 		character = Pattern.compile(RegexHelper.charRegex);
 	}
 	
+	public LinkedHashMap<Coordinate, ArrayList<CharBean>> getBeanMap() {
+		return beanMap;
+	}
+
 	public BeanGenerator()
 	{
 		beanGen = new StringBuilder("");
@@ -41,10 +47,20 @@ public class BeanGenerator
 				Matcher m = character.matcher(getScan);
 				if(m.find())
 				{
+					Coordinate coord = new Coordinate(Double.parseDouble(m.group(5)));
 					groups = m.group(3) + "," + m.group(5) + "," + m.group(8)
 							+ "," + m.group(11) + "," + m.group(14) + ","
 							+ m.group(17) + "," + m.group(20) + "," + m.group(22);
-					charBeanList.add(new CharBean(groups));
+					if(getBeanMap().containsKey(coord)) //If the map already contains this coordinate object
+					{
+						getBeanMap().get(coord).add(new CharBean(groups)); //Simply add the CharBean to the ArrayList indexed by this Coordinate object.
+					}
+					else
+					{
+						charBeanList = new ArrayList<CharBean>();
+						charBeanList.add(new CharBean(groups));
+						getBeanMap().put(coord, charBeanList);
+					}
 				}
 				groups = "";
 			}
