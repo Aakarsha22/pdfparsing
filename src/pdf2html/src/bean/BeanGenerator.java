@@ -18,7 +18,7 @@ public class BeanGenerator
 	public BeanGenerator(String s)
 	{
 		beanGen = new StringBuilder(s);
-		character = Pattern.compile(RegexHelper.charRegex);
+		character = Pattern.compile(RegexHelper.charRegex, Pattern.UNICODE_CHARACTER_CLASS);
 	}
 	
 	public LinkedHashMap<Coordinate, ArrayList<CharBean>> getBeanMap() {
@@ -75,9 +75,9 @@ public class BeanGenerator
 	{
 		static String words = "((?:[a-z][a-z]+))";
 		static String singleChar = "(.)";
-		static String floatNum = "([+-]?\\d*\\.\\d+)(?![-+0-9\\.])";
+		static String floatNum = "([+-]?\\d*\\.\\d+)(?![-+0-9.])";
 		static String space = "\\s";
-		static String singleCharOrSpace = "([\\s.\\w])";
+		static String singleCharOrSpace = "([\\s\\w])";
 		
 		static String charRegex = words + singleChar + floatNum
 				+ singleChar + floatNum + space + words 

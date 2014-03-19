@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class BeanToHTML 
 {
 	String newLine = System.getProperty("line.separator");
-	StringBuilder HTML = new StringBuilder("<HTML>" + newLine);
+	StringBuilder HTML = new StringBuilder("<HTML>");
 	LinkedHashMap<Coordinate, ArrayList<CharBean>> beanMap;
 	int pageNumber;
 	
@@ -27,18 +27,17 @@ public class BeanToHTML
 		int beanCounter = 1;
 		for(Map.Entry<Coordinate, ArrayList<CharBean>> entry : beanMap.entrySet())
 		{
-			HTML.append("<DIV style=\"top: 0 left: " + entry.getKey().getTextAdjYPos() + "font-size: ");
+			HTML.append("<DIV style=\"position: absolute left: 0 top: " + entry.getKey().getTextAdjYPos() + " font-size: ");
 			for(CharBean C : entry.getValue())
 			{
 				if(beanCounter == 1)
 					HTML.append(C.fontSize + "\">");
 				HTML.append(C.character);
-				if(beanCounter == entry.getValue().size())
-					HTML.append("</DIV>" + newLine);
 				beanCounter++;
 			}
 			beanCounter = 1;
 		}
+		HTML.append("</HTML>");
 	}
 	
 	public void writeHTML() throws IOException
@@ -46,6 +45,8 @@ public class BeanToHTML
 		createHTMLString();
 		File htmlFile = new File("output/HTML" + pageNumber + ".html");
 		PrintWriter pw = new PrintWriter(new FileWriter(htmlFile));
-		pw.println(HTML);
+		pw.println(HTML.toString());
+		System.out.println("Pointless debug again");
+		pw.close();
 	}
 }
