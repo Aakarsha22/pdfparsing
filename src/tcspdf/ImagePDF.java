@@ -1,7 +1,9 @@
 package tcspdf;
 import java.util.*;
 import java.io.*;
+
 import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.graphics.xobject.PDXObjectImage;
 import org.apache.pdfbox.util.PDFTextStripper;
@@ -13,8 +15,8 @@ public class ImagePDF
 	public static void main(String[] args) {
 		   ImagePDF obj = new ImagePDF();
 		    try {
-		        obj.read_pdf(); //Image output method.
-		    	//obj.getFontProperties(); //Trying for fonts.
+		        //obj.read_pdf(); //Image output method.
+		    	obj.getFontProperties(); //Trying for fonts.
 		    	//if(Boolean.parseBoolean(args[0]) == true)
 		    		//writeToHTML();
 		    } catch (Exception ex) {
@@ -76,7 +78,7 @@ public class ImagePDF
 		 void getFontProperties() throws Exception
 		 {
 			 Map<String, PDFont> pageFonts = new HashMap<String, PDFont>();
-			 PDDocument pd = PDDocument.load("/home/pritishc/Documents/Sample text.pdf");
+			 PDDocument pd = PDDocument.load("lib/Sample text.pdf");
 			 PDFTextStripper ts = new PDFTextStripper();
 			 System.out.println(ts.getText(pd));
 			 @SuppressWarnings("unchecked")
@@ -84,8 +86,12 @@ public class ImagePDF
 			 for(PDPage page : pages)
 			 {
 				 pageFonts = page.getResources().getFonts();
+				 for(Map.Entry<String, PDFont> entry : pageFonts.entrySet())
+					 System.out.println(entry.getValue().getBaseFont());
 			 }
-			 System.out.println("\n" + pageFonts.toString());
+			 //System.out.println("\n" + pageFonts.toString());
 			 pd.close();
 		 }
+		 
+		 
 }

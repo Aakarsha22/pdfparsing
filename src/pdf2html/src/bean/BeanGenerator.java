@@ -10,7 +10,9 @@ public class BeanGenerator
 {
 	StringBuilder beanGen;
 	Pattern character;
-	Pattern image;
+	Pattern imageName;
+	Pattern imagePos;
+	Pattern imageSize;
 	
 	ArrayList<CharBean> charBeanList; //Will use this as a placeholder.
 	private LinkedHashMap<Coordinate, ArrayList<CharBean>> beanMap = new LinkedHashMap<Coordinate, ArrayList<CharBean>>();
@@ -77,7 +79,12 @@ public class BeanGenerator
 		static String singleChar = "(.)";
 		static String floatNum = "([+-]?\\d*\\.\\d+)(?![-+0-9.])";
 		static String space = "\\s";
+		static String spacePlus = "\\s+";
+		static String numPlus = "\\d+";
 		static String singleCharOrSpace = "([\\s\\w])";
+		static String alphaNum = "((?:[a-z][a-z]*[0-9]+[a-z0-9]*))";
+		
+		
 		
 		static String charRegex = words + singleChar + floatNum
 				+ singleChar + floatNum + space + words 
@@ -86,5 +93,16 @@ public class BeanGenerator
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + singleChar + singleCharOrSpace;
+		
+		static String imageName = words + spacePlus + words + spacePlus
+									+ singleChar + alphaNum + singleChar;
+		
+		static String imagePosition = words + spacePlus + singleChar 
+									+ spacePlus + floatNum + singleChar
+									+ spacePlus + floatNum;
+		static String imageSize = words + spacePlus + singleChar + spacePlus
+								+ numPlus + words + singleChar + singleChar 
+								+ numPlus + words;
+		
 	}
 }
