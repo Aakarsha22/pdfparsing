@@ -10,8 +10,9 @@ import java.io.PrintWriter;
 
 public class BeanToHTML 
 {
-	String newLine = System.getProperty("line.separator");
-	StringBuilder HTML = new StringBuilder("<HTML>");
+	String newLine = "<BR>";
+	StringBuilder HTML = new StringBuilder("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\""
+             + "\"http://www.w3.org/TR/html4/loose.dtd\">" + "<HTML>");
 	LinkedHashMap<Coordinate, ArrayList<CharBean>> beanMap;
 	int pageNumber;
 	
@@ -27,15 +28,16 @@ public class BeanToHTML
 		int beanCounter = 1;
 		for(Map.Entry<Coordinate, ArrayList<CharBean>> entry : beanMap.entrySet())
 		{
-			HTML.append("<DIV style=\"position: absolute left: 0 top: " + entry.getKey().getTextAdjYPos() + " font-size: ");
+			HTML.append("<FONT style=\"font-size: ");
 			for(CharBean C : entry.getValue())
 			{
 				if(beanCounter == 1)
-					HTML.append(C.fontSize + "\">");
+					HTML.append(C.fontSize + "pt;\">");
 				HTML.append(C.character);
 				beanCounter++;
 			}
 			beanCounter = 1;
+			HTML.append("</FONT>" + newLine);
 		}
 		HTML.append("</HTML>");
 	}
