@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 public class BeanToHTML 
 {
@@ -46,8 +49,8 @@ public class BeanToHTML
 	{
 		createHTMLString();
 		File htmlFile = new File("output/HTML" + pageNumber + ".html");
-		PrintWriter pw = new PrintWriter(new FileWriter(htmlFile));
-		pw.println(HTML.toString());
+		PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(htmlFile), StandardCharsets.UTF_16));
+		pw.write(HTML.toString());
 		System.out.println("Pointless debug again");
 		pw.close();
 	}

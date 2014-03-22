@@ -18,7 +18,7 @@ public class BeanGenerator
 	public BeanGenerator(String s)
 	{
 		beanGen = new StringBuilder(s);
-		character = Pattern.compile(RegexHelper.charRegex, Pattern.UNICODE_CHARACTER_CLASS);
+		character = Pattern.compile(RegexHelper.charRegex);
 	}
 	
 	public LinkedHashMap<Coordinate, ArrayList<CharBean>> getBeanMap() {
@@ -48,9 +48,9 @@ public class BeanGenerator
 				if(m.find())
 				{
 					Coordinate coord = new Coordinate(m.group(5));
-					groups = m.group(3) + "," + m.group(5) + "," + m.group(8)
-							+ "," + m.group(11) + "," + m.group(14) + ","
-							+ m.group(17) + "," + m.group(20) + "," + m.group(22);
+					groups = m.group(3) + "_,_" + m.group(5) + "_,_" + m.group(8)
+							+ "_,_" + m.group(11) + "_,_" + m.group(14) + "_,_"
+							+ m.group(17) + "_,_" + m.group(20) + "_,_" + m.group(22);
 					if(getBeanMap().containsKey(coord)) //If the map already contains this coordinate object
 					{
 						getBeanMap().get(coord).add(new CharBean(groups)); //Simply add the CharBean to the ArrayList indexed by this Coordinate object.
@@ -77,7 +77,7 @@ public class BeanGenerator
 		static String singleChar = "(.)";
 		static String floatNum = "([+-]?\\d*\\.\\d+)(?![-+0-9.])";
 		static String space = "\\s";
-		static String singleCharOrSpace = "([\\s\\w])";
+		static String notLineEnd = "([^\r?\n])"; 
 		
 		static String charRegex = words + singleChar + floatNum
 				+ singleChar + floatNum + space + words 
@@ -85,6 +85,6 @@ public class BeanGenerator
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + space + words
 				+ singleChar + floatNum + space + words
-				+ singleChar + floatNum + singleChar + singleCharOrSpace;
+				+ singleChar + floatNum + singleChar + singleChar;
 	}
 }

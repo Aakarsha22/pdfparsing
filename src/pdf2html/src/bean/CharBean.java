@@ -14,7 +14,7 @@ public class CharBean
 	
 	public CharBean(String container)
 	{
-		String[] values = container.split(",");
+		String[] values = container.split("_,_");
 		//Field[] allFields = CharBean.class.getDeclaredFields();
 		
 		int i = 0;
